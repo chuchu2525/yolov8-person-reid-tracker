@@ -28,7 +28,7 @@ CONFIG = {
     'gallery_threshold': 0.7,       # ギャラリーマッチング閾値（厳しくする）
     'max_gallery_size': 20,         # 1人当たりの最大ギャラリーサイズ（削減）
     'update_interval': 3,           # 特徴量更新間隔（フレーム数）
-    'max_missing_frames': 300,       # ID消失判定フレーム数（短縮）
+    'max_missing_frames': 9000,     # ID消失判定フレーム数（5分@30FPS想定: 5*60*30=9000）
     'video_fps': 10,                # 出力動画のFPS
     'iou_threshold': 0.3,           # 検出間のIoU重複除去閾値
 }
@@ -629,7 +629,10 @@ def main():
     print(f"設定パラメータ: {CONFIG}")
     
     # 動画ファイルパス
-    video_path = "../videos/classtest04.mp4"
+    video_path = "../videos/megane-test.mov"
+        # ../videos/classtest04.mp4: 教室の動画　重なり強
+        # ../videos/classtest06-resized.mov: 教室の動画 重なり弱
+        # ../videos/test04.mov: 広場の動画 重なり中
     output_path = "output_gallery_tracking_fixed.mp4"
     
     if not os.path.exists(video_path):
