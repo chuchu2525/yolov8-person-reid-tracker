@@ -39,7 +39,7 @@ def detect_persons(image, model, config):
     return detections
 
 def main():
-    image_path = "../videos/megane04.png"  # テスト画像
+    image_path = "../videos/megane01.png"  # テスト画像
     output_path = "seat_area_assignment_foot_result.jpg"
 
     image = cv2.imread(image_path)
